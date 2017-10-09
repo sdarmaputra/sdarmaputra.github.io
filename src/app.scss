@@ -1,0 +1,98 @@
+$baseline: 24px;
+$primary-font-color: #666;
+$brand-color: #3cacd8;
+$content-width: 768px;
+
+@mixin transition($options...) {
+	transition: $options;
+	-webkit-transition: $options;
+	-moz-transition: $options;
+	-ms-transition: $options;
+	-o-transition: $options;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: $primary-font-color;
+	font-size: $baseline * 0.6;
+	font-family: 'Roboto Slab', serif;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px dashed $primary-font-color;
+	
+	&:focus, &:visited {
+		color: $primary-font-color;
+	}
+
+	&:hover {
+		color: $brand-color;
+		border-bottom: 1px dashed $brand-color;
+	}
+}
+
+.l-landing {
+	position: absolute;
+	max-width: $content-width;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: $baseline * 4 $baseline;
+	text-align: center;
+}
+
+.landing-logo {
+	width: 150px;
+	height: 125px;
+	
+	&__image {
+		width: 100px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		animation-name: bouncing-logo;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+}
+
+.landing-navigation {
+	margin: ($baseline * 2) $baseline;
+	text-align: center;
+
+	&__item {
+		text-decoration: none;
+		font-size: $baseline * 0.8;
+		color: $brand-color;
+		padding: $baseline * 0.5 $baseline;
+		border: 1px solid $brand-color;
+		@include transition(all 0.15s);
+	
+		&:focus, &:visited {
+			color: $brand-color;
+		}
+	
+		&:hover {
+			color: #fff;
+			background: $brand-color;
+		}
+	}
+}
+
+.footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	box-sizing: border-box;
+	padding: $baseline;
+	text-align: center;
+}
+
+@keyframes bouncing-logo {
+	100% {
+		transform: translate(-50%, $baseline * 0.6);
+	}
+}
